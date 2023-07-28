@@ -1,13 +1,13 @@
 {
-  "name": "react-package-sample",
+  "name": "react-opencv",
   "version": "1.0.0",
-  "description": "",
+  "description": "opencv for react",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
   "types": "./dist/esm/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/handwoo24/react-package-sample.git"
+    "url": "git+https://github.com/handwoo24/react-opencv.git"
   },
   "peerDependencies": {
     "react": ">=16"
@@ -28,7 +28,7 @@
     "prettier": "prettier --write \"{src,tests,example/src}/**/*.{js,ts,jsx,tsx}\""
   },
   "keywords": [
-    "pdf",
+    "opencv",
     "react",
     "typescript"
   ],
