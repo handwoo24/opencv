@@ -1,15 +1,22 @@
-import { useEffect, useState } from 'react'
-import { type Cv } from './interface'
+import { useEffect, useRef, useState } from 'react'
 import initCv from './initCv'
+import { type Cv } from './interface'
+
+declare let cv: Cv
 
 const useCv = (version = '4.8.0'): Cv | undefined => {
-  const [cv, setCv] = useState<Cv>()
+  const [client, setClient] = useState<Cv>()
+  const emptyRef = useRef<string>()
 
   useEffect(() => {
-    if (!cv) initCv(version).then(setCv)
-  }, [cv, version])
+    if (emptyRef.current === version) return
+    initCv(version).then(() => {
+      setClient(cv)
+    })
+    emptyRef.current = version
+  }, [version])
 
-  return cv
+  return client
 }
 
 export default useCv

@@ -1,11 +1,9 @@
-import { type Cv } from './interface'
-
-const initCv = (version = '4.8.0'): Promise<Cv> => {
+const initCv = (version = '4.8.0'): Promise<Event> => {
   const element = document.createElement('script')
-  const promise = new Promise<Cv>((resolve, reject) => {
-    element.onload = (): void => {
+  const promise = new Promise<Event>((resolve, reject) => {
+    element.onload = (event): void => {
       setTimeout(() => {
-        resolve(cv)
+        resolve(event)
       }, 300)
     }
     element.onerror = reject
