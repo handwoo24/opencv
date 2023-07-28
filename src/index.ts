@@ -1,2 +1,3 @@
-export { default as cv } from './loadCv'
+export { default as initCv } from './initCv'
 export * from './interface'
+export { default as useCv } from './useCv'
