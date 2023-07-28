@@ -1,13 +1,13 @@
 {
-  "name": "react-opencv",
-  "version": "1.0.0",
-  "description": "opencv for react",
+  "name": "next-opencv",
+  "version": "0.1.0",
+  "description": "opencv for next",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
   "types": "./dist/esm/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/handwoo24/react-opencv.git"
+    "url": "git+https://github.com/handwoo24/next-opencv.git"
   },
   "peerDependencies": {
     "react": ">=16"
@@ -22,8 +22,7 @@
     "build:esm": "tsc",
     "build:cjs": "tsc --module commonjs --outDir dist/cjs",
     "prepare": "npm run build",
-    "prepublishOnly": "npm test && npm run prettier && npm run lint",
-    "test": "jest --config jestconfig.json",
+    "prepublishOnly": "npm run prettier && npm run lint",
     "lint": "eslint \"{**/*,*}.{js,ts,jsx,tsx}\"",
     "prettier": "prettier --write \"{src,tests,example/src}/**/*.{js,ts,jsx,tsx}\""
   },
