@@ -1,6 +1,6 @@
 {
   "name": "@handwoo24/opencv",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "opencv for react",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",

@@ -15,7 +15,7 @@ const useCv = (version = '4.8.0'): [Cv | undefined, boolean, Error | undefined] 
     if (emptyRef.current === version) return
     setLoading(true)
     initCv(version)
-      .then(setClient)
+      .then(() => setClient(window.cv))
       .catch(setError)
       .finally(() => setLoading(false))
     emptyRef.current = version

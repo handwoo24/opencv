@@ -1,24 +1,12 @@
-import { debounce } from 'lodash'
-import { type Cv } from './interface'
-
-declare const cv: Cv
-
-const recursiveCv = (elapsedms: number, ms: number, fn: (cv: Cv) => void): void => {
-  const diffms = elapsedms ? new Date().getTime() - elapsedms : 0
-  if (diffms > ms) throw new Error('failed to initialize cv with timeout')
-  else if (typeof cv === 'undefined') {
-    return debounce(recursiveCv, 100)(diffms, ms, fn)
-  } else return fn(cv)
-}
-
-const initCv = (version = '4.8.0'): Promise<Cv> => {
+const initCv = (version = '4.8.0'): Promise<Event> => {
+  const src = `https://docs.opencv.org/${version}/opencv.js`
   const element = document.createElement('script')
-  const promise = new Promise<Cv>((resolve, reject) => {
-    element.onload = (): void => recursiveCv(0, 1000, resolve)
+  const promise = new Promise<Event>((resolve, reject) => {
+    window.Module = { onRuntimeInitialized: (): void => resolve(new Event(src)) }
     element.onerror = reject
-    document.body.appendChild(element)
-    element.src = `https://docs.opencv.org/${version}/opencv.js`
   })
+  element.src = src
+  window.document.body.appendChild(element)
   return promise
 }
 
